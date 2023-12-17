@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+{% load static %}
+
+    {% block title %}
+    <title>ROYAL CARS - Success</title>
+    <meta content="Free HTML Templates" name="description">
+    {% endblock title %}
+   
+{% block content %}
+
+
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header">
+        <h1 class="display-3 text-uppercase text-white mb-3">Message</h1>
+        <div class="d-inline-flex text-white">
+            <h6 class="text-uppercase m-0"><a class="text-white" href="">{{message}}</a></h6> 
+            <h6 class="text-body m-0 px-3">/</h6>
+            <h6 class="text-uppercase text-body m-0">{% if status == False %}Kindly retry or give us a call {% else %}We will get in touch shortly{% endif %}</h6>
+           
+        </div>
+    </div>
+    <!-- Page Header Start -->
+
+
+   {% endblock %}

@@ -1,0 +1,98 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+<title>ROYAL CARS - Car Rental HTML Template</title>
+<meta content="Free HTML Templates" name="description">
+
+{% endblock title %}
+   
+
+    {% block content %}
+    
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header">
+        <h1 class="display-3 text-uppercase text-white mb-3">Car Listing</h1>
+        <div class="d-inline-flex text-white">
+            <h6 class="text-uppercase m-0"><a class="text-white" href="">Home</a></h6>
+            <h6 class="text-body m-0 px-3">/</h6>
+            <h6 class="text-uppercase text-body m-0">Car Listing</h6>
+        </div>
+    </div>
+    <!-- Page Header Start -->
+
+
+    <!-- Rent A Car Start -->
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <h1 class="display-4 text-uppercase text-center mb-5">Find Your Car</h1>
+            <div class="row">
+                {% if cars %}
+                {% for car in cars %}
+                <div class="col-lg-4 col-md-6 mb-2">
+                    <div class="rent-item mb-4">
+                        <img class="img-fluid mb-4" src="{{car.image.url}}" alt="{{car.name}}">
+                        <h4 class="text-uppercase mb-4">{{car.name}}</h4>
+                        <div class="d-flex justify-content-center mb-4">
+                            <div class="px-2">
+                                <i class="fa fa-car text-primary mr-1"></i>
+                                <span>{{car.year}}</span>
+                            </div>
+                            <div class="px-2 border-left border-right">
+                                <i class="fa fa-cogs text-primary mr-1"></i>
+                                <span>{{car.engine_mode}}</span>
+                            </div>
+                            <div class="px-2">
+                                <i class="fa fa-road text-primary mr-1"></i>
+                                <span>{{car.fuel_consumption}}</span>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary px-3" href="{% url "cardetail" car.url %}">${{car.price_per_day}}/Day</a>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <h4> There are no cars for rent at the moment</h4>
+                {% endif %}
+
+                
+            </div>
+        </div>
+    </div>
+    <!-- Rent A Car End -->
+
+
+    <!-- Banner Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row mx-0">
+                <div class="col-lg-6 px-0">
+                    <div class="px-5 bg-secondary d-flex align-items-center justify-content-between" style="height: 350px;">
+                        <img class="img-fluid flex-shrink-0 ml-n5 w-50 mr-4" src="{% static 'img/banner-left.png' %}" alt="">
+                        <div class="text-right">
+                            <h3 class="text-uppercase text-light mb-3">Want to be driver?</h3>
+                            <p class="mb-4">Lorem justo sit sit ipsum eos lorem kasd, kasd labore</p>
+                            <a class="btn btn-primary py-2 px-4" href="">Start Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 px-0">
+                    <div class="px-5 bg-dark d-flex align-items-center justify-content-between" style="height: 350px;">
+                        <div class="text-left">
+                            <h3 class="text-uppercase text-light mb-3">Looking for a car?</h3>
+                            <p class="mb-4">Lorem justo sit sit ipsum eos lorem kasd, kasd labore</p>
+                            <a class="btn btn-primary py-2 px-4" href="">Start Now</a>
+                        </div>
+                        <img class="img-fluid flex-shrink-0 mr-n5 w-50 ml-4" src="{% static 'img/banner-right.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner End -->
+
+
+    
+
+    {% endblock content %}

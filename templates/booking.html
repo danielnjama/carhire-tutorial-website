@@ -1,0 +1,145 @@
+{% extends "index.html" %}
+{% load static %}
+
+    {% block title %}
+    <title>ROYAL CARS - Car Rental HTML Template</title>
+    <meta content="Free HTML Templates" name="description">
+    {% endblock title %}
+   
+{% block content %}
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header">
+        <h1 class="display-3 text-uppercase text-white mb-3">Car Booking</h1>
+        <div class="d-inline-flex text-white">
+            <h6 class="text-uppercase m-0"><a class="text-white" href="">Home</a></h6>
+            <h6 class="text-body m-0 px-3">/</h6>
+            <h6 class="text-uppercase text-body m-0">Car Booking</h6>
+        </div>
+    </div>
+    <!-- Page Header Start -->
+
+
+    <!-- Detail Start -->
+    <div class="container-fluid pt-5">
+        <div class="container pt-5 pb-3">
+            <h1 class="display-4 text-uppercase mb-5">{{car.name}}</h1>
+            <div class="row align-items-center pb-2">
+                <div class="col-lg-6 mb-4">
+                    <img class="img-fluid" src="{{car.image.url}}" alt="{{car.name}}">
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <h4 class="mb-2">${{car.price_per_day}}/Day</h4>
+                    <div class="d-flex mb-3">
+                        <h6 class="mr-2">Rating:</h6>
+                        <div class="d-flex align-items-center justify-content-center mb-1">
+                            <small class="fa fa-star text-primary mr-1"></small>
+                            <small class="fa fa-star text-primary mr-1"></small>
+                            <small class="fa fa-star text-primary mr-1"></small>
+                            <small class="fa fa-star text-primary mr-1"></small>
+                            <small class="fa fa-star-half-alt text-primary mr-1"></small>
+                            <small>(250)</small>
+                        </div>
+                    </div>
+                    <p>{{car.description}}</p>
+                    <div class="d-flex pt-1">
+                        <h6>Share on:</h6>
+                        <div class="d-inline-flex">
+                            <a class="px-2" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="px-2" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="px-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                            <a class="px-2" href=""><i class="fab fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-n3 mt-lg-0 pb-4">
+                <div class="col-md-3 col-6 mb-2">
+                    <i class="fa fa-car text-primary mr-2"></i>
+                    <span>Model: {{car.year}}</span>
+                </div>
+                <div class="col-md-3 col-6 mb-2">
+                    <i class="fa fa-cogs text-primary mr-2"></i>
+                    <span>{{car.engine_mode}}</span>
+                </div>
+                <div class="col-md-3 col-6 mb-2">
+                    <i class="fa fa-road text-primary mr-2"></i>
+                    <span>{{car.fuel_consumption}}/liter</span>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Detail End -->
+
+
+    <!-- Car Booking Start -->
+    <div class="container-fluid pb-5">
+        <div class="container">
+        <form method="post" action="#">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2 class="mb-4">Personal Detail</h2>
+                    <div class="mb-5">
+                       
+                        <div class="row">
+                            <div class="col-6 form-group">
+                                <input type="text" class="form-control p-4" placeholder="First Name" required="required" name="first_name">
+                            </div>
+                            <div class="col-6 form-group">
+                                <input type="text" class="form-control p-4" placeholder="Last Name" required="required" name="last_name">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 form-group">
+                                <input type="email" class="form-control p-4" placeholder="Your Email" required="required" name="email">
+                            </div>
+                            <div class="col-6 form-group">
+                                <input type="text" class="form-control p-4" placeholder="Mobile Number" required="required" name="phone_number">
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="mb-4">Booking Detail</h2>
+                    <div class="mb-5">
+                        
+                        
+                        
+                        <div class="form-group">
+                            <textarea class="form-control py-3 px-4" rows="3" placeholder="Special Request" required="required" name="special_request"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="bg-secondary p-5 mb-5">
+                        <h2 class="text-primary mb-4">Payment</h2>
+                        <div class="form-group">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="payment" id="paypal" value="Paypal" required>
+                                <label class="custom-control-label" for="paypal">Paypal</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="payment" id="directcheck" value="Check" required>
+                                <label class="custom-control-label" for="directcheck">Direct Check</label>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="payment" id="banktransfer" value="Transfer" required>
+                                <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
+                            </div>
+                        </div>
+                        <button class="btn btn-block btn-primary py-3">Reserve Now</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+    <!-- Car Booking End -->
+
+    {% endblock content %}
+   
